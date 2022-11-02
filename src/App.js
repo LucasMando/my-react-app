@@ -1,6 +1,7 @@
 import ItemListContainer from './components/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
         <NavBar />
       </header>
       <Routes>
-        <Route path='/' element={<ItemListContainer />}/>
+        <Route path='/' element={<ItemListContainer/>}/>
+        <Route path='/itemdetail/:detalles' element={<ItemDetailContainer/>}/>
       </Routes>
     </BrowserRouter>
   );
