@@ -16,12 +16,16 @@ function ItemCount ({stock, initial, onAdd}){
         }
     }
 
+    const agregar = () => {
+        onAdd(cantidad)
+    }
+
     return (
         <div>
             <p>{cantidad}</p>
             <button disabled={cantidad === stock} onClick={sumar}>+</button>
             <button disabled={cantidad === initial} onClick={restar}>-</button>
-            <button onClick={() => onAdd(cantidad)}>Agregar al carrito</button>
+            <button onClick={agregar}>Agregar al carrito</button>
         </div>
     )
 }
