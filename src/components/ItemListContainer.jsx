@@ -16,7 +16,7 @@ const ItemListContainer = () => {
                     const productosFiltrados = products.filter((prod) => prod.category === categoryName)
                     setTimeout(() => {
                         res(productosFiltrados);
-                    }, 2000);
+                    }, 1000);
                 });
             };
         
