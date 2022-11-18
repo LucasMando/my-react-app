@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { products } from '../products';
 import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom';
+import { collection, doc, getDoc } from 'firebase/firestore';
+import { dataBase } from '../config';
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
-
     const {detalles} = useParams() 
 
     useEffect(() => {
-        const getProduct = () => {
-            return new Promise((res, rej) => {
-                const product = products.find((prod) => prod.id === +detalles)
-                setTimeout(() => {
-                    res(product);
-                }, 1000);
-            });
-        };
+        const collectionProd = collection(dataBase, 'itemCollection')
+        const reference = doc(collectionProd, detalles)
 
-        getProduct()
-            .then((res) => {
-                setItem(res);
+        getDoc(reference)
+        .then((res) => {
+            setItem({
+                id: res.id,
+                ...res.data()
             })
-            .catch((error) => {
-                console.log(error);
-            });
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }, [detalles]);
     return (
         <div>
