@@ -41,8 +41,26 @@ const Provider = (props) => {
         setCart([])
     }
 
+    const totalUnidades = () => {
+        let count = 0
+        const copia = [...cart]
+        copia.forEach((prod)=>{
+            count = count += prod.cantidad
+        })
+        return count
+    }
+
+    const totalPrecio = () => {
+        let count = 0
+        const copia = [...cart]
+        copia.forEach((prod)=>{
+            count = count += prod.cantidad * prod.price
+        })
+        return count
+    }
+
     return (
-        <CartContext.Provider value = {{ cart, addToCart, deleteAll, deleteOne}}>
+        <CartContext.Provider value = {{ cart, addToCart, deleteAll, deleteOne, totalUnidades, totalPrecio}}>
             {props.children}
         </CartContext.Provider>
     )

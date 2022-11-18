@@ -8,4 +8,17 @@
     display: flex;
     justify-content: space-between;
     width: 20%;
+    list-style: none;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    border: 2px black solid;
+}
+
+.active {
+    border: 2px black solid;
 }
